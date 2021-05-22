@@ -118,7 +118,7 @@ function title(path) {
     // $('title').html(document.siteName + ' - ' + path);
     var model = window.MODEL;
     if (model.is_search_page)
-        $('title').html(`${drive_name} - Search results for ${model.q} `);
+        $('title').html(`${drive_name} - arama sonuçları ${model.q} `);
     else
         $('title').html(`${drive_name} - ${path}`);
 }
@@ -137,7 +137,7 @@ function nav(path) {
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
       <li class="nav-item">
-        <a class="nav-link" href="/${cur}:/">Home</a>
+        <a class="nav-link" href="/${cur}:/">Ana sayfa</a>
       </li>`;
     var names = window.drive_names;
     var drive_name = window.drive_names[cur];
@@ -149,7 +149,7 @@ function nav(path) {
     });
     html += `</div></li>`;
 
-    html += `<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Current Path</a><div class="dropdown-menu" aria-labelledby="navbarDropdown"><a class="dropdown-item"  href="/">> Home</a>`;
+    html += `<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Şuanki yol</a><div class="dropdown-menu" aria-labelledby="navbarDropdown"><a class="dropdown-item"  href="/">> Ana sayfa</a>`;
 
     if (!model.is_search_page) {
         var arr = path.trim('/').split('/');
@@ -168,7 +168,7 @@ function nav(path) {
                 }
                 p += an + '/';
                 var ext = p.split('.').pop().toLowerCase();
-                if ("|mp3/|aac/|wma/|wpl/|aif/|cda/|mpa/|wav/|ogg/|mp4/|mkv/|mov/|flac/|m4a/|pdf/|jpg/|png/|jpeg/|gif/|md/|zip/|rar/|exe/|tar/|txt/|html/|7z/|arj/|deb/|pkg/|rpm/|tar.gz/|z/|bin/|dmg/|iso/|toast/|vcd/|csv/|dat/|db/|dbf/|log/|mdv/|sav/|sql/|xml/|email/|vcf/|apk/|bat/|bin/|cgi/|jar/|py/|msi/|wsf/|fnt/|fon/|otf/|ttf/|ai/|bmp/|ico/|ps/|psd/|svg/|tif/|tiff/|asp/|aspx/|cer/|cfm/|cgi/|pl/|css/|htm/|html/|js/|jsp/|part/|php/|rss/|xhtml/|key/|odp/|pps/|ppt/|pptx/|pem/|ppk/|java/|sh/|vb/|ods/|xls/|xlsm/|xlsx/|3gp/|flv/|m4v/|mpg/|mpeg/|avi/|doc/|docx/|rtf/|".indexOf(`|${ext}|`) >= 0) {
+                if ("|mp3/|eac3/|ac3/|aac/|wma/|wpl/|aif/|cda/|mpa/|wav/|ogg/|m4v/|mp4/|mkv/|mov/|flac/|m4a/|pdf/|jpg/|png/|jpeg/|gif/|md/|zip/|rar/|exe/|tar/|txt/|html/|7z/|arj/|deb/|pkg/|rpm/|tar.gz/|z/|bin/|dmg/|iso/|toast/|vcd/|csv/|dat/|db/|dbf/|log/|mdv/|sav/|sql/|xml/|email/|vcf/|apk/|bat/|bin/|cgi/|jar/|py/|msi/|wsf/|fnt/|fon/|otf/|ttf/|ai/|bmp/|ico/|ps/|psd/|svg/|tif/|tiff/|asp/|aspx/|cer/|cfm/|cgi/|pl/|css/|htm/|html/|js/|jsp/|part/|php/|rss/|xhtml/|key/|odp/|pps/|ppt/|pptx/|pem/|ppk/|java/|sh/|vb/|ods/|xls/|xlsm/|xlsx/|3gp/|flv/|m4v/|mpg/|mpeg/|avi/|doc/|docx/|rtf/|".indexOf(`|${ext}|`) >= 0) {
                     p = p.slice(0, -1);
                 }
                 if (n === '') {
@@ -180,7 +180,7 @@ function nav(path) {
     }
 
     html += `</div></li><li class="nav-item">
-    <a class="nav-link" href="${UI.contact_link}" target="_blank">Contact</a>
+    <a class="nav-link" href="${UI.contact_link}" target="_blank">İletişim</a>
   </li>`;
 
     var search_text = model.is_search_page ? (model.q || '') : '';
@@ -188,8 +188,8 @@ function nav(path) {
     var search_bar = `
 </ul>
 <form class="d-flex" method="get" action="/${cur}:search">
-<input class="form-control me-2" name="q" type="search" placeholder="Search" aria-label="Search" value="${search_text}" required>
-<button class="btn ${UI.search_button_class}" onclick="if($('#search_bar_form>input').val()) $('#search_bar_form').submit();" type="submit">Search</button>
+<input class="form-control me-2" name="q" type="search" placeholder="Ara" aria-label="Ara" value="${search_text}" required>
+<button class="btn ${UI.search_button_class}" onclick="if($('#search_bar_form>input').val()) $('#search_bar_form').submit();" type="submit">Ara</button>
 </form>
 </div>
 </div>
@@ -255,7 +255,7 @@ function list(path) {
     <div id="head_md" style="display:none; padding: 20px 20px;"></div>
     <div class="${UI.path_nav_alert_class} d-flex align-items-center" role="alert" style="margin-bottom: 0; padding-bottom: 0rem;">
   <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-    <ol class="breadcrumb" id="folderne"><li class="breadcrumb-item"><a href="/">Home</a></li>`;
+    <ol class="breadcrumb" id="folderne"><li class="breadcrumb-item"><a href="/">Ana sayfa</a></li>`;
   var navlink = '';
   var navfulllink = window.location.pathname;
   var breadbar = '';
@@ -288,7 +288,7 @@ function list(path) {
   </div>
     <div id="list" class="list-group text-break">
     </div>
-  	<div class="${UI.file_count_alert_class} text-center d-none" role="alert" id="count">Total <span class="number text-center"></span> items</div>
+  	<div class="${UI.file_count_alert_class} text-center d-none" role="alert" id="count">Toplam <span class="number text-center"></span> öğe</div>
     <div id="readme_md" style="display:none; padding: 20px 20px;"></div>
     </div>
     `;
@@ -375,7 +375,7 @@ function list(path) {
         successResultCallback,
         function(path) {
             $('#spinner').remove();
-            var pass = prompt("Directory encryption, please enter the password", "");
+            var pass = prompt("Lütfen şifreyi girin", "");
             localStorage.setItem('password' + path, pass);
             if (pass != null && pass != "") {
                 list(path);
@@ -437,7 +437,7 @@ function append_files_to_list(path, files) {
             //}
             html += `<div class="list-group-item list-group-item-action">`
 
-            if ("|mp4|webm|avi|mpg|mpeg|mkv|rm|rmvb|mov|wmv|asf|ts|flv|".indexOf(`|${ext}|`) >= 0) {
+            if ("|mp4|m4v|webm|avi|mpg|mpeg|mkv|rm|rmvb|mov|wmv|asf|ts|flv|".indexOf(`|${ext}|`) >= 0) {
               html += `<svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"><g transform="translate(0 -1028.362)"><path d="m 12,1028.3622 c -6.62589,0 -12.00002,5.3741 -12.00002,12 0,6.6259 5.37413,12 12.00002,12 6.62589,0 12.00002,-5.3741 12.00002,-12 0,-6.6259 -5.37413,-12 -12.00002,-12 z" style="line-height:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000;text-transform:none;block-progression:tb;white-space:normal;isolation:auto;mix-blend-mode:normal;solid-color:#000;solid-opacity:1" fill="#50b748" color="#000" enable-background="accumulate" font-family="sans-serif" font-weight="400" overflow="visible"/><path d="m 13,1035.162 a 2.5,2.5 0 0 0 -2.5,2.5 2.5,2.5 0 0 0 0.87695,1.9004 l -2.45117,0 A 2,2 0 0 0 9.5,1038.162 a 2,2 0 0 0 -2,-2 2,2 0 0 0 -2,2 2,2 0 0 0 0.64843,1.4707 C 5.77,1039.775 5.5,1040.133 5.5,1040.5624 l 0,4 c 0,0.554 0.44599,1 1,1 l 8,0 c 0.55401,0 1,-0.446 1,-1 l 0,-0.8008 3,1.8008 0,-6 -3,1.8008 0,-0.8008 c 0,-0.5194 -0.39686,-0.9294 -0.90235,-0.9805 a 2.5,2.5 0 0 0 0.90235,-1.9199 2.5,2.5 0 0 0 -2.5,-2.5 z m 0,1 a 1.5,1.5 0 0 1 1.5,1.5 1.5,1.5 0 0 1 -1.5,1.5 1.5,1.5 0 0 1 -1.5,-1.5 1.5,1.5 0 0 1 1.5,-1.5 z m -5.5,1 a 1,1 0 0 1 1,1 1,1 0 0 1 -1,1 1,1 0 0 1 -1,-1 1,1 0 0 1 1,-1 z m 2,6.4004 1,0 0,1 -1,0 0,-1 z m 2,0 1,0 0,1 -1,0 0,-1 z m 2,0 1,0 0,1 -1,0 0,-1 z" style="isolation:auto;mix-blend-mode:normal;solid-color:#000;solid-opacity:1" fill="#fff" color="#000" enable-background="accumulate" overflow="visible"/></g></svg>`
             }
             else if ("|html|php|css|go|java|js|json|txt|sh|".indexOf(`|${ext}|`) >= 0) {
@@ -523,11 +523,11 @@ function render_search_result_list() {
     var content = `
   <div class="container"><br>
   <div class="card">
-  <div class="${UI.path_nav_alert_class} d-flex align-items-center" role="alert" style="margin-bottom: 0;">Search Results</div>
+  <div class="${UI.path_nav_alert_class} d-flex align-items-center" role="alert" style="margin-bottom: 0;">Arama Sonuçları</div>
   <div id="list" class="list-group text-break">
   </div>
   </div>
-  <div class="${UI.file_count_alert_class} text-center d-none" role="alert" id="count">Total <span class="number text-center"></span> items</div>
+  <div class="${UI.file_count_alert_class} text-center d-none" role="alert" id="count">Toplam <span class="number text-center"></span> öğe</div>
   <div id="readme_md" style="display:none; padding: 20px 20px;"></div>
   </div>
   `;
@@ -638,13 +638,13 @@ function append_search_result_to_list(files) {
             var p = '/' + cur + ':/' + item.name;
             var c = "file";
             var ext = item.name.split('.').pop().toLowerCase();
-            if ("|html|php|css|go|java|js|json|txt|sh|md|mp4|webm|avi|bmp|jpg|jpeg|png|gif|m4a|mp3|flac|wav|ogg|mpg|mpeg|mkv|rm|rmvb|mov|wmv|asf|ts|flv|".indexOf(`|${ext}|`) >= 0) {
+            if ("|html|php|css|go|java|js|json|txt|sh|md|m4v|mp4|webm|avi|bmp|jpg|jpeg|png|gif|m4a|mp3|flac|wav|ogg|mpg|mpeg|mkv|rm|rmvb|mov|wmv|asf|ts|flv|".indexOf(`|${ext}|`) >= 0) {
                 p += "?a=view";
                 c += " view";
             }
             html += `<a style="color: ${UI.css_a_tag_color};" onclick="onSearchResultItemClick(this)" data-bs-toggle="modal" data-bs-target="#SearchModel" id="${item['id']}" gd-type="${item.mimeType}" class="list-group-item list-group-item-action">`
 
-            if ("|mp4|webm|avi|mpg|mpeg|mkv|rm|rmvb|mov|wmv|asf|ts|flv|".indexOf(`|${ext}|`) >= 0) {
+            if ("|m4v|mp4|webm|avi|mpg|mpeg|mkv|rm|rmvb|mov|wmv|asf|ts|flv|".indexOf(`|${ext}|`) >= 0) {
               html += `<svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"><g transform="translate(0 -1028.362)"><path d="m 12,1028.3622 c -6.62589,0 -12.00002,5.3741 -12.00002,12 0,6.6259 5.37413,12 12.00002,12 6.62589,0 12.00002,-5.3741 12.00002,-12 0,-6.6259 -5.37413,-12 -12.00002,-12 z" style="line-height:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000;text-transform:none;block-progression:tb;white-space:normal;isolation:auto;mix-blend-mode:normal;solid-color:#000;solid-opacity:1" fill="#50b748" color="#000" enable-background="accumulate" font-family="sans-serif" font-weight="400" overflow="visible"/><path d="m 13,1035.162 a 2.5,2.5 0 0 0 -2.5,2.5 2.5,2.5 0 0 0 0.87695,1.9004 l -2.45117,0 A 2,2 0 0 0 9.5,1038.162 a 2,2 0 0 0 -2,-2 2,2 0 0 0 -2,2 2,2 0 0 0 0.64843,1.4707 C 5.77,1039.775 5.5,1040.133 5.5,1040.5624 l 0,4 c 0,0.554 0.44599,1 1,1 l 8,0 c 0.55401,0 1,-0.446 1,-1 l 0,-0.8008 3,1.8008 0,-6 -3,1.8008 0,-0.8008 c 0,-0.5194 -0.39686,-0.9294 -0.90235,-0.9805 a 2.5,2.5 0 0 0 0.90235,-1.9199 2.5,2.5 0 0 0 -2.5,-2.5 z m 0,1 a 1.5,1.5 0 0 1 1.5,1.5 1.5,1.5 0 0 1 -1.5,1.5 1.5,1.5 0 0 1 -1.5,-1.5 1.5,1.5 0 0 1 1.5,-1.5 z m -5.5,1 a 1,1 0 0 1 1,1 1,1 0 0 1 -1,1 1,1 0 0 1 -1,-1 1,1 0 0 1 1,-1 z m 2,6.4004 1,0 0,1 -1,0 0,-1 z m 2,0 1,0 0,1 -1,0 0,-1 z m 2,0 1,0 0,1 -1,0 0,-1 z" style="isolation:auto;mix-blend-mode:normal;solid-color:#000;solid-opacity:1" fill="#fff" color="#000" enable-background="accumulate" overflow="visible"/></g></svg>`
             }
             else if ("|html|php|css|go|java|js|json|txt|sh|".indexOf(`|${ext}|`) >= 0) {
@@ -713,13 +713,13 @@ function onSearchResultItemClick(a_ele) {
             }
             title = `Result`;
             $('#SearchModelLabel').html(title);
-            content = `<a class="btn btn-info" href="${ehrefurl}">Open</a> <a class="btn btn-secondary" href="${ehrefurl}" target="_blank">Open in New Tab</a>`;
+            content = `<a class="btn btn-info" href="${ehrefurl}">Aç</a> <a class="btn btn-secondary" href="${ehrefurl}" target="_blank">Yeni sekmede aç</a>`;
             $('#modal-body-space').html(content);
             return;
         }
         title = `Failed`;
         $('#SearchModelLabel').html(title);
-        content = `System Failed to Fetch the File/Folder Link, Please close and try agin.`;
+        content = `Sistem Dosya/Klasör Bağlantısını Getiremedi, Lütfen kapatın ve tekrar deneyin.`;
         $('#modal-body-space').html(content);
     })
 }
@@ -759,7 +759,7 @@ function file(path) {
         return file_code(path);
     }
 
-    if ("|mp4|webm|avi|".indexOf(`|${ext}|`) >= 0) {
+    if ("|m4v|mp4|webm|avi|".indexOf(`|${ext}|`) >= 0) {
         return file_video(path);
     }
 
@@ -807,14 +807,14 @@ function file_others(path) {
 <div class="card-body">
 <div class="input-group mb-4">
   <div class="input-group-prepend">
-    <span class="input-group-text" id="">Full URL</span>
+    <span class="input-group-text" id="">Tam URL</span>
   </div>
   <input type="text" class="form-control" id="dlurl" value="${url}">
 </div>
 	<div class="card-text text-center">
   ${UI.display_drive_link ? '<a type="button" class="btn btn-info" href="https://drive.google.com/file/d/'+ obj.id +'/view" id ="file_drive_link" target="_blank">GD Link</a>': ''}
   <div class="btn-group text-center">
-      <a href="${url}" type="button" class="btn btn-primary">Download</a>
+      <a href="${url}" type="button" class="btn btn-primary">İndir</a>
       <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <span class="sr-only"></span>
       </button>
@@ -824,7 +824,7 @@ function file_others(path) {
         <a class="dropdown-item" href="intent:${url}#Intent;component=idm.internet.download.manager.plus/idm.internet.download.manager.Downloader;S.title=${decodename};end">1DM+ (Plus)</a>
       </div>
   </div>
-  <button onclick="copyFunction()" onmouseout="outFunc()" class="btn btn-success"> <span class="tooltiptext" id="myTooltip">Copy</span> </button>
+  <button onclick="copyFunction()" onmouseout="outFunc()" class="btn btn-success"> <span class="tooltiptext" id="myTooltip">Kopyala</span> </button>
   </div>
   <br></div>`;
     $('#content').html(content);
@@ -867,14 +867,14 @@ function file_code(path) {
 <div class="card-body">
 <div class="input-group mb-4">
   <div class="input-group-prepend">
-    <span class="input-group-text" id="">Full URL</span>
+    <span class="input-group-text" id="">Tam URL</span>
   </div>
   <input type="text" class="form-control" id="dlurl" value="${url}">
 </div>
 	<div class="card-text text-center">
   ${UI.display_drive_link ? '<a type="button" class="btn btn-info" href="https://drive.google.com/file/d/'+ obj.id +'/view" id ="file_drive_link" target="_blank">GD Link</a>': ''}
   <div class="btn-group text-center">
-      <a href="${url}" type="button" class="btn btn-primary">Download</a>
+      <a href="${url}" type="button" class="btn btn-primary">İndir</a>
       <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <span class="sr-only"></span>
       </button>
@@ -884,7 +884,7 @@ function file_code(path) {
         <a class="dropdown-item" href="intent:${url}#Intent;component=idm.internet.download.manager.plus/idm.internet.download.manager.Downloader;S.title=${decodename};end">1DM+ (Plus)</a>
       </div>
   </div>
-  <button onclick="copyFunction()" onmouseout="outFunc()" class="btn btn-success"> <span class="tooltiptext" id="myTooltip">Copy</span> </button></div><br></div>
+  <button onclick="copyFunction()" onmouseout="outFunc()" class="btn btn-success"> <span class="tooltiptext" id="myTooltip">Kopyala</span> </button></div><br></div>
 <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/prism.js" integrity="sha256-fZOd7N/oofoKcO92RzxvC0wMm+EvsKyRT4nmcmQbgzU=" crossorigin="anonymous"></script>
 `;
     $('#content').html(content);
@@ -928,16 +928,7 @@ function file_video(path) {
 	  <source src="${url}" type="video/webm" />
 	  <track kind="captions" label="Default" src="${caption}.vtt" srclang="en" />
     <track kind="captions" label="English" src="${caption}.en.vtt" srclang="en" default />
-    <track kind="captions" label="Hindi" src="${caption}.hi.vtt" srclang="hi" />
-    <track kind="captions" label="Russian" src="${caption}.ru.vtt" srclang="ru" />
-    <track kind="captions" label="Malayalam" src="${caption}.ml.vtt" srclang="ml" />
-    <track kind="captions" label="Korean" src="${caption}.ko.vtt" srclang="ko" />
-    <track kind="captions" label="Japanese" src="${caption}.ja.vtt" srclang="ja" />
-    <track kind="captions" label="Indonesian" src="${caption}.id.vtt" srclang="id" />
-    <track kind="captions" label="German" src="${caption}.de.vtt" srclang="de" />
-    <track kind="captions" label="French" src="${caption}.fr.vtt" srclang="fr" />
-    <track kind="captions" label="Chinese" src="${caption}.zh.vtt" srclang="zh" />
-    <track kind="captions" label="Arabic" src="${caption}.ar.vtt" srclang="ar" />
+    <track kind="captions" label="Turkish" src="${caption}.tr.vtt" srclang="tr" />
 	<track kind="captions" label="${UI.custom_srt_lang}" src="${caption}.${UI.custom_srt_lang}.vtt" srclang="${UI.custom_srt_lang}" />
 	</video>
   </div>
@@ -949,13 +940,13 @@ ${UI.disable_video_download ? `` : `
 <div class="card-body">
 <div class="input-group mb-4">
   <div class="input-group-prepend">
-    <span class="input-group-text" id="">Full URL</span>
+    <span class="input-group-text" id="">Tam URL</span>
   </div>
   <input type="text" class="form-control" id="dlurl" value="${url}">
 </div>
 ${UI.display_drive_link ? '<a type="button" class="btn btn-info" href="https://drive.google.com/file/d/'+ obj.id +'/view" id ="file_drive_link" target="_blank">GD Link</a>': ''}
 <div class="btn-group text-center">
-    <a href="${url}" type="button" class="btn btn-primary">Download</a>
+    <a href="${url}" type="button" class="btn btn-primary">İndir</a>
     <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       <span class="sr-only"></span>
     </button>
@@ -973,7 +964,7 @@ ${UI.display_drive_link ? '<a type="button" class="btn btn-info" href="https://d
       <a class="dropdown-item" href="intent:${url}#Intent;component=idm.internet.download.manager.plus/idm.internet.download.manager.Downloader;S.title=${decodename};end">1DM+ (Plus)</a>
     </div>
 </div>
-<button onclick="copyFunction()" onmouseout="outFunc()" class="btn btn-success"> <span class="tooltiptext" id="myTooltip">Copy</span> </button>
+<button onclick="copyFunction()" onmouseout="outFunc()" class="btn btn-success"> <span class="tooltiptext" id="myTooltip">Kopyala</span> </button>
 <br>
   </div>
   </div>
@@ -1003,7 +994,7 @@ function file_audio(path) {
   <audio id="vplayer" width="100%" playsinline controls>
     <source src="${url}" type="audio/ogg">
     <source src="${url}" type="audio/mpeg">
-  Your browser does not support the audio element.
+Tarayıcınız ses öğesini desteklemiyor.
   </audio>
   </div>
 	${UI.disable_player ? '<style>.plyr{display:none;}</style>' : ''}
@@ -1013,14 +1004,14 @@ function file_audio(path) {
   <div class="card-body">
 <div class="input-group mb-4">
   <div class="input-group-prepend">
-    <span class="input-group-text" id="">Full URL</span>
+    <span class="input-group-text" id="">Tam URL</span>
   </div>
   <input type="text" class="form-control" id="dlurl" value="${url}">
 </div>
 	<div class="card-text text-center">
   ${UI.display_drive_link ? '<a type="button" class="btn btn-info" href="https://drive.google.com/file/d/'+ obj.id +'/view" id ="file_drive_link" target="_blank">GD Link</a>': ''}
   <div class="btn-group text-center">
-      <a href="${url}" type="button" class="btn btn-primary">Download</a>
+      <a href="${url}" type="button" class="btn btn-primary">İndir</a>
       <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <span class="sr-only"></span>
       </button>
@@ -1030,7 +1021,7 @@ function file_audio(path) {
         <a class="dropdown-item" href="intent:${url}#Intent;component=idm.internet.download.manager.plus/idm.internet.download.manager.Downloader;S.title=${decodename};end">1DM+ (Plus)</a>
       </div>
   </div>
-  <button onclick="copyFunction()" onmouseout="outFunc()" class="btn btn-success"> <span class="tooltiptext" id="myTooltip">Copy</span> </button></div><br>
+  <button onclick="copyFunction()" onmouseout="outFunc()" class="btn btn-success"> <span class="tooltiptext" id="myTooltip">Kopyala</span> </button></div><br>
   </div>
   </div>
   </div>
@@ -1117,24 +1108,24 @@ function file_pdf(path) {
   <div class="card-body text-center">
   <div class="${UI.file_view_alert_class}" id="file_details" role="alert">${obj.name}<br>${size}</div>
   <div>
-  <button id="prev" class="btn btn-info">Previous</button>
-  <button id="next" class="btn btn-info">Next</button>
+  <button id="prev" class="btn btn-info">Önceki</button>
+  <button id="next" class="btn btn-info">Sonraki</button>
   &nbsp; &nbsp;
-  <span>Page: <span id="page_num"></span> / <span id="page_count"></span></span>
+  <span>Sayfa: <span id="page_num"></span> / <span id="page_count"></span></span>
   </div><br>
   <canvas id="the-canvas" style="max-width: 100%;"></canvas>
   </div>
   <div class="card-body">
 <div class="input-group mb-4">
   <div class="input-group-prepend">
-    <span class="input-group-text" id="">Full URL</span>
+    <span class="input-group-text" id="">Tam URL</span>
   </div>
   <input type="text" class="form-control" id="dlurl" value="${url}">
 </div>
 	<div class="card-text text-center">
   ${UI.display_drive_link ? '<a type="button" class="btn btn-info" href="https://drive.google.com/file/d/'+ obj.id +'/view" id ="file_drive_link" target="_blank">GD Link</a>': ''}
   <div class="btn-group text-center">
-      <a href="${url}" type="button" class="btn btn-primary">Download</a>
+      <a href="${url}" type="button" class="btn btn-primary">İndir</a>
       <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <span class="sr-only"></span>
       </button>
@@ -1144,7 +1135,7 @@ function file_pdf(path) {
         <a class="dropdown-item" href="intent:${url}#Intent;component=idm.internet.download.manager.plus/idm.internet.download.manager.Downloader;S.title=${decodename};end">1DM+ (Plus)</a>
       </div>
   </div>
-  <button onclick="copyFunction()" onmouseout="outFunc()" class="btn btn-success"> <span class="tooltiptext" id="myTooltip">Copy</span> </button></div><br>
+  <button onclick="copyFunction()" onmouseout="outFunc()" class="btn btn-success"> <span class="tooltiptext" id="myTooltip">Kopyala</span> </button></div><br>
   </div>
   </div>
   </div>
@@ -1199,9 +1190,9 @@ function file_image(path) {
       		}
             targetText = `
 
-                              ${prevchild ? `<a class="btn btn-primary" href="${prev_child}?a=view" role="button">Previous</a>` : ``}
+                              ${prevchild ? `<a class="btn btn-primary" href="${prev_child}?a=view" role="button">Önceki</a>` : ``}
 
-                              ${nextchild ? `<a class="btn btn-primary" href="${next_child}?a=view" role="button">Next</a>` : ``}
+                              ${nextchild ? `<a class="btn btn-primary" href="${next_child}?a=view" role="button">Sonraki</a>` : ``}
 
                   `;
     }
@@ -1221,14 +1212,14 @@ function file_image(path) {
   <div class="card-body">
 <div class="input-group mb-4">
   <div class="input-group-prepend">
-    <span class="input-group-text" id="">Full URL</span>
+    <span class="input-group-text" id="">Tam URL</span>
   </div>
   <input type="text" class="form-control" id="dlurl" value="${url}">
 </div>
 	<div class="card-text text-center">
   ${UI.display_drive_link ? '<a type="button" class="btn btn-info" href="https://drive.google.com/file/d/'+ obj.id +'/view" id ="file_drive_link" target="_blank">GD Link</a>': ''}
   <div class="btn-group text-center">
-      <a href="${url}" type="button" class="btn btn-primary">Download</a>
+      <a href="${url}" type="button" class="btn btn-primary">İndir</a>
       <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <span class="sr-only"></span>
       </button>
@@ -1238,7 +1229,7 @@ function file_image(path) {
         <a class="dropdown-item" href="intent:${url}#Intent;component=idm.internet.download.manager.plus/idm.internet.download.manager.Downloader;S.title=${decodename};end">1DM+ (Plus)</a>
       </div>
   </div>
-  <button onclick="copyFunction()" onmouseout="outFunc()" class="btn btn-success"> <span class="tooltiptext" id="myTooltip">Copy</span> </button></div><br>
+  <button onclick="copyFunction()" onmouseout="outFunc()" class="btn btn-success"> <span class="tooltiptext" id="myTooltip">Kopyala</span> </button></div><br>
   </div>
   </div>
   </div>
@@ -1299,9 +1290,9 @@ function formatFileSize(bytes) {
     } else if (bytes >= 1000) {
         bytes = (bytes / 1000).toFixed(2) + ' KB';
     } else if (bytes > 1) {
-        bytes = bytes + ' bytes';
+        bytes = bytes + ' bayt';
     } else if (bytes == 1) {
-        bytes = bytes + ' byte';
+        bytes = bytes + ' bayt';
     } else {
         bytes = '';
     }
@@ -1382,10 +1373,10 @@ function copyFunction() {
     copyText.setSelectionRange(0, 99999);
     document.execCommand("copy");
     var tooltip = document.getElementById("myTooltip");
-    tooltip.innerHTML = "Copied";
+    tooltip.innerHTML = "Kopyalandı";
 }
 
 function outFunc() {
     var tooltip = document.getElementById("myTooltip");
-    tooltip.innerHTML = "Copy";
+    tooltip.innerHTML = "Kopyala";
 }
