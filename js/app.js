@@ -927,9 +927,9 @@ function file_video(path) {
 	  <source src="${url}" type="video/mp4" />
 	  <source src="${url}" type="video/webm" />
 	  <track kind="captions" label="Default" src="${caption}.vtt" srclang="en" />
-    <track kind="captions" label="English" src="${caption}.en.vtt" srclang="en" default />
-    <track kind="captions" label="Turkish" src="${caption}.tr.vtt" srclang="tr" />
-	<track kind="captions" label="${UI.custom_srt_lang}" src="${caption}.${UI.custom_srt_lang}.vtt" srclang="${UI.custom_srt_lang}" />
+    <track kind="captions" label="English" src="${caption}.vtt" srclang="en" default />
+    <track kind="captions" label="Turkish" src="${caption}.vtt" srclang="tr" />
+	<track kind="captions" label="${UI.custom_srt_lang}" src="${UI.custom_srt_lang}.vtt" srclang="${UI.custom_srt_lang}" />
 	</video>
   </div>
 	${UI.disable_player ? '<style>.plyr{display:none;}</style>' : ''}
